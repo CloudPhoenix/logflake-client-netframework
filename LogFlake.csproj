@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>LogFlake.Client.NetFramework</PackageId>
+    <Version>1.5.7</Version>
+    <Authors>CloudPhoenix Srl</Authors>
+    <Company>CloudPhoenix Srl</Company>
+    <TargetFramework>net472</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/CloudPhoenix/logflake-client-netframework</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>LogFlake;CloudPhoenix;Cloud Phoenix;Log Flake;Log;Logs</PackageTags>
+    <Description>LogFlake Client .NET Framework</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12.0</LangVersion>
+    <RootNamespace>NLogFlake</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Snappier" Version="1.1.6" />
+  </ItemGroup>
+</Project>
