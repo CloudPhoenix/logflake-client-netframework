@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # OIDC token for NuGet Trusted Publishing
 
     steps:
       - name: Checkout repository
@@ -17,6 +20,11 @@ jobs:
       - name: Build and create nupkg
         run: dotnet build --configuration Release
         shell: bash
+      - name: NuGet login (OIDC -> temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: a.breda
       - name: Publish NuGet Package
         shell: bash
-        run: dotnet nuget push bin/Release/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push bin/Release/*.nupkg --skip-duplicate --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
